@@ -1,0 +1,56 @@
+  @baseUrl = http://localhost:3000
+
+// Entity Structure
+// export class Lead {
+//   id: number;
+//   organizationId: string;
+//   name: string;
+//   email: string;
+//   phone: string;
+//   address: string;
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
+
+# LEADS
+
+### GET ALL LEADS
+GET {{baseUrl}}/leads
+
+### GET ALL LEADS (Alphabetical)
+GET {{baseUrl}}/leads?sort=alphabetical
+
+### GET ALL LEADS (Recent)
+GET {{baseUrl}}/leads?sort=recent
+
+### GET ALL LEADS (Oldest)
+GET {{baseUrl}}/leads?sort=oldest
+
+### GET ONE LEAD BY ID
+GET {{baseUrl}}/leads/1
+
+### GET LEADS BY DEEP SEARCH
+GET {{baseUrl}}/leads/search?search=AAjoao
+
+### CREATE LEAD
+POST {{baseUrl}}/leads
+Content-Type: application/json
+
+{
+  "name": "CCão da Silvo",
+  "email": "CCjoao@exampl.com",
+  "phone": "1215999999",
+  "address": "Rua Exemplo, 123"
+}
+
+### UPDATE LEAD (Partial)
+PATCH {{baseUrl}}/leads/1
+Content-Type: application/json
+
+{
+  "name": "João da Silva Atualizado",
+  "email": "novoemail@example.com"
+}
+
+### DELETE LEAD
+DELETE {{baseUrl}}/leads/1
