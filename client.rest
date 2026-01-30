@@ -54,3 +54,106 @@ Content-Type: application/json
 
 ### DELETE LEAD
 DELETE {{baseUrl}}/leads/1
+
+###############################################################################
+# TAGS
+###############################################################################
+
+### GET ALL TAGS
+GET {{baseUrl}}/tags
+
+### GET TAG BY ID
+GET {{baseUrl}}/tags/tag-uuid-here
+
+### CREATE TAG
+POST {{baseUrl}}/tags
+Content-Type: application/json
+
+{
+  "name": "Cliente VIP",
+  "color": "#FF6B6B"
+}
+
+### CREATE TAG (with default color)
+POST {{baseUrl}}/tags
+Content-Type: application/json
+
+{
+  "name": "Novo Lead"
+}
+
+### UPDATE TAG
+PATCH {{baseUrl}}/tags/tag-uuid-here
+Content-Type: application/json
+
+{
+  "name": "Cliente Premium",
+  "color": "#4ECDC4"
+}
+
+### DELETE TAG
+DELETE {{baseUrl}}/tags/tag-uuid-here
+
+### ASSIGN TAGS TO LEAD
+POST {{baseUrl}}/tags/leads/lead-uuid-here/assign
+Content-Type: application/json
+
+{
+  "tagIds": ["tag-uuid-1", "tag-uuid-2"]
+}
+
+### REMOVE TAGS FROM LEAD
+POST {{baseUrl}}/tags/leads/lead-uuid-here/remove
+Content-Type: application/json
+
+{
+  "tagIds": ["tag-uuid-1"]
+}
+
+### GET ALL TAGS OF A LEAD
+GET {{baseUrl}}/tags/leads/lead-uuid-here
+
+###############################################################################
+# GROUPS (Kanban)
+###############################################################################
+
+### GET ALL GROUPS
+GET {{baseUrl}}/groups
+
+### GET GROUP BY ID
+GET {{baseUrl}}/groups/group-uuid-here
+
+### CREATE GROUP
+POST {{baseUrl}}/groups
+Content-Type: application/json
+
+{
+  "name": "Primeiro Contato",
+  "description": "Leads que acabaram de entrar no funil"
+}
+
+### CREATE GROUP (without description)
+POST {{baseUrl}}/groups
+Content-Type: application/json
+
+{
+  "name": "Negociação"
+}
+
+### UPDATE GROUP
+PATCH {{baseUrl}}/groups/group-uuid-here
+Content-Type: application/json
+
+{
+  "name": "Leads Quentes",
+  "description": "Leads com alta probabilidade de conversão"
+}
+
+### DELETE GROUP
+DELETE {{baseUrl}}/groups/group-uuid-here
+
+### ASSIGN TAG TO GROUP
+POST {{baseUrl}}/groups/group-uuid-here/assign-tag/tag-uuid-here
+
+### REMOVE TAG FROM GROUP
+DELETE {{baseUrl}}/groups/group-uuid-here/remove-tag
